@@ -1,3 +1,4 @@
+// Login.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,50 +10,59 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Logging in:", email, password);
-    // You can later add real backend login logic here
-    navigate("/"); // redirect to home after login
+    navigate("/");
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-[#0b1739] to-[#1a2a6c] text-white px-6">
-      <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl p-10 w-full max-w-md text-center">
-        <h2 className="text-3xl font-bold mb-6">Welcome Back 👋</h2>
-        <p className="text-gray-200 mb-6">
-          Log in to your <span className="text-blue-400">Soga</span> account
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-b from-[#050816] via-[#111827] to-[#020617] text-slate-100 px-4">
+      <div className="w-full max-w-md bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-slate-950/70 p-8 sm:p-10">
+        <h2 className="text-3xl font-bold mb-2 text-center">
+          Welcome back
+          <span className="text-cyan-400">.</span>
+        </h2>
+        <p className="text-slate-400 mb-8 text-center text-sm">
+          Log in to your <span className="text-cyan-300">Soga</span> workspace to pick up
+          where you left off.
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-          <input
-            type="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="py-3 px-4 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
+          <div className="text-left text-sm">
+            <label className="block mb-1 text-slate-300">Email address</label>
+            <input
+              type="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full py-3 px-4 rounded-lg bg-slate-950/60 text-slate-100 placeholder-slate-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+              required
+            />
+          </div>
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="py-3 px-4 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
+          <div className="text-left text-sm">
+            <label className="block mb-1 text-slate-300">Password</label>
+            <input
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full py-3 px-4 rounded-lg bg-slate-950/60 text-slate-100 placeholder-slate-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+              required
+            />
+          </div>
 
           <button
             type="submit"
-            className="mt-3 bg-gradient-to-r from-[#0b1739] to-[#1a2a6c] text-white py-3 rounded-lg font-semibold hover:opacity-80 transition-all"
+            className="mt-2 bg-gradient-to-r from-indigo-500 to-cyan-400 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-all shadow-lg shadow-indigo-500/40"
           >
-            Log In
+            Log in
           </button>
         </form>
 
-        <p className="text-sm text-gray-300 mt-6">
-          Don’t have an account?{" "}
+        <p className="text-sm text-slate-400 mt-6 text-center">
+          Don&apos;t have an account?{" "}
           <button
             onClick={() => navigate("/signup")}
-            className="text-blue-400 hover:underline"
+            className="text-cyan-300 hover:text-cyan-200 hover:underline"
           >
             Sign up
           </button>
@@ -60,9 +70,9 @@ const Login = () => {
 
         <button
           onClick={() => navigate("/")}
-          className="mt-8 text-sm text-gray-400 hover:text-white transition"
+          className="mt-6 w-full text-xs text-slate-500 hover:text-slate-200 transition"
         >
-          ← Back to Home
+          ← Back to home
         </button>
       </div>
     </div>

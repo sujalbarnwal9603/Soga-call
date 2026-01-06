@@ -1,3 +1,4 @@
+// App.jsx
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -9,13 +10,11 @@ function AppContent() {
   const location = useLocation();
   const hideNavbar = location.pathname === "/login" || location.pathname === "/signup";
 
-  // ✅ Apply background only if navbar is visible (home pages)
-  const baseBg = hideNavbar
-    ? "bg-[#0b1739]" // dark base for auth pages
-    : "bg-gradient-to-b from-[#0e0e0e] via-[#292f44] to-[#9eb1b7]";
+  const baseBg =
+    "bg-gradient-to-b from-[#050816] via-[#111827] to-[#020617] text-slate-100";
 
   return (
-    <div className={`min-h-screen text-white ${baseBg}`}>
+    <div className={`min-h-screen ${baseBg}`}>
       {!hideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
