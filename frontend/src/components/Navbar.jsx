@@ -62,15 +62,17 @@ const Navbar = () => {
 
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <button
-            className={`py-2 px-5 rounded transition ${
-              isScrolled
-                ? "bg-[#0b1739] text-white hover:opacity-80"
-                : "bg-gradient-to-r from-[#0b1739] to-[#1a2a6c] text-white hover:opacity-80"
-            }`}
-          >
-            Sign In
-          </button>
+          <Link to="/signup">
+            <button
+              className={`py-2 px-5 rounded transition ${
+                isScrolled
+                  ? "bg-[#0b1739] text-white hover:opacity-80"
+                  : "bg-gradient-to-r from-[#0b1739] to-[#1a2a6c] text-white hover:opacity-80"
+              }`}
+            >
+              Sign In
+            </button>
+          </Link>
           <Link to="/login">
             <button
               className={`py-2 px-5 rounded font-bold transition ${
