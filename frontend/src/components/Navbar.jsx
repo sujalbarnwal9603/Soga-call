@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -70,15 +71,17 @@ const Navbar = () => {
           >
             Sign In
           </button>
-          <button
-            className={`py-2 px-5 rounded font-bold transition ${
-              isScrolled
-                ? "bg-gradient-to-r from-[#0b1739] to-[#1a2a6c] text-white hover:opacity-80"
-                : "bg-gradient-to-r from-white to-[#9eb1b7] text-[#0b1739] hover:opacity-80"
-            }`}
-          >
+          <Link to="/login">
+            <button
+              className={`py-2 px-5 rounded font-bold transition ${
+                isScrolled
+                  ? "bg-gradient-to-r from-[#0b1739] to-[#1a2a6c] text-white hover:opacity-80"
+                  : "bg-gradient-to-r from-white to-[#9eb1b7] text-[#0b1739] hover:opacity-80"
+              }`}
+            >
             Log In
-          </button>
+            </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
