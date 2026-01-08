@@ -1,6 +1,8 @@
 // Dashboard.jsx
 import { useState } from "react";
 import { UserPlus, Phone, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 
 const Dashboard = () => {
   const [friends, setFriends] = useState([
@@ -8,6 +10,7 @@ const Dashboard = () => {
     { id: 2, name: "Priya Patel", status: "offline", img: "" },
     { id: 3, name: "Rohan Mehta", status: "online", img: "" },
   ]);
+  const navigate = useNavigate();
 
   const [newFriend, setNewFriend] = useState("");
 
@@ -63,7 +66,10 @@ const Dashboard = () => {
         </div>
 
         {/* Logout Button */}
-        <button className="mt-8 w-full py-2 text-sm text-slate-400 hover:text-cyan-300 transition-all border-t border-white/10 pt-3">
+        <button
+          onClick={() => navigate("/logout")}
+          className="mt-8 w-full py-2 text-sm text-slate-400 hover:text-cyan-300 transition-all border-t border-white/10 pt-3"
+        >
           Log out
         </button>
       </aside>
