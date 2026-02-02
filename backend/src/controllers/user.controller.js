@@ -42,3 +42,35 @@ export const registerUser =AsyncHandler(async(req, res)=>{
    🔐 USER LOGIN CONTROLLER
 ================================= */
 
+export const loginUser=AsyncHandler(async(req,res)=>{
+    const {email, password}=req.body;
+
+    if(!email|| !password){
+        throw new ApiError(400, "Email and password are required");
+    }
+
+    const user= await User.findOne({email});
+        if(!user){
+            throw new ApiError(401, "Invalid email or password");
+        }
+    
+    const isMatch= await bcrypt.compare(password, user.password);
+
+    if(!isMatch){
+        throw new ApiError(401, "Invalid password");
+    }
+
+    // Generate JWT Token
+    const token = jwt.sign(
+        {id:user._id, email: user.email},
+        process.env.JWT_SECRET,
+        {expiresIn: '7d'}
+    );
+
+    const {password:_, ...userData}=user._doc;
+
+    return res
+        .status(200)
+        .json(new ApiResponse(200, "Login successfull", {user: userData, token}));
+})
+
