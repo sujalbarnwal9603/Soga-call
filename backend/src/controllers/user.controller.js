@@ -74,3 +74,16 @@ export const loginUser=AsyncHandler(async(req,res)=>{
         .json(new ApiResponse(200, "Login successfull", {user: userData, token}));
 })
 
+
+export const getUserProfile=AsyncHandler(async(req,res)=>{
+    const user = await User.findById(req.user.id).select("-password");
+
+    if(!user){
+        throw new ApiError(404, "User not found");
+    }
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200, "User profile fetched successfully", user));
+});
+

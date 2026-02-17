@@ -1,5 +1,6 @@
 import express from 'express';
-import {loginUser, registerUser} from '../controllers/user.controller.js';
+import {loginUser, registerUser, getUserProfile} from '../controllers/user.controller.js';
+import { verifyJWT } from '../middlewares/auth.middleware.js';
 
 const router= express.Router();
 
@@ -8,5 +9,8 @@ router.post("/signup", registerUser);
 
 //Login user
 router.post("/login", loginUser);
+
+//Get user profile
+router.get("/profile", verifyJWT,getUserProfile);
 
 export default router;
